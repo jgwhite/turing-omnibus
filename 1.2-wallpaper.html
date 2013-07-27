@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<body>
+
+<canvas id="canvas" width="512" height="512"></canvas>
+
+<script>
+var canvas = document.getElementById('canvas'),
+    ctx = canvas.getContext('2d'),
+    zoom = 2,
+    size = 512 / zoom;
+
+function wallpaper(corna, cornb, side) {
+  for (var i = 0; i < size; i++) {
+    for (var j = 0; j < size; j++) {
+      var x = corna + i * side / size,
+          y = cornb + j * side / size,
+          c = Math.round(Math.pow(x, 2) + Math.pow(y, 2));
+
+      ctx.fillStyle = ['white', 'gray', 'black'][c % 3];
+      ctx.fillRect(i * zoom, j * zoom, zoom, zoom);
+    }
+  }
+}
+
+wallpaper(127, 17, 255);
+
+</script>
+
+</body>
+</html>
